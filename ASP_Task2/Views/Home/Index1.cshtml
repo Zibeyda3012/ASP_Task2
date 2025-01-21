@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ASP_Task2.Entities.Person>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Task 2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 20px; display:flex; flex-direction:column; justify-content:center">
+    <table style="border-collapse: collapse; width: 100%; max-width: 800px; margin: 20px auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden;">
+        <thead style="background-color: #2a68e2; color: white;">
+            <tr>
+                <th style="padding: 12px 20px; text-align: left;">ID</th>
+                <th style="padding: 12px 20px; text-align: left;">Name</th>
+                <th style="padding: 12px 20px; text-align: left;">Surname</th>
+                <th style="padding: 12px 20px; text-align: left;">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr style="background-color: #ffffff; border-bottom: 1px solid #ddd; transition: background-color 0.3s ease;">
+                    <td style="padding: 12px 20px;">@user.Id</td>
+                    <td style="padding: 12px 20px;">@user.Name</td>
+                    <td style="padding: 12px 20px;">@user.Surname</td>
+                    <td style="padding: 12px 20px;">
+                        <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px;">
+                            <button asp-controller="Home" asp-action="Delete" method="post" style="border: none; background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;">
+                                <i class="fa-solid fa-trash" style="margin-right: 4px;"></i> Delete
+                            </button>
+                            <button style="border: none; background-color: #f39c12; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;">
+                                <i class="fa-solid fa-pen-to-square" style="margin-right: 4px;"></i> Edit
+                            </button>
+                            <button style="border: none; background-color: #3498db; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;">
+                                <i class="fa-solid fa-circle-info" style="margin-right: 4px;"></i> Info
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button style="width:150px; align-self:center; background-color:black; color:white; padding:10px; border:1px solid black; border-radius:6px; font-size:16px; font-weight:600; cursor:pointer;">Add new User</button>
+</body>
+>
+</html>
