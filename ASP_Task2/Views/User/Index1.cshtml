@@ -31,15 +31,18 @@
                     <td style="padding: 12px 20px;">@user.Surname</td>
                     <td style="padding: 12px 20px;">
                         <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px;">
-                            <button asp-controller="Home" asp-action="Delete" method="post" style="border: none; background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;">
-                                <i class="fa-solid fa-trash" style="margin-right: 4px;"></i> Delete
-                            </button>
-                            <button style="border: none; background-color: #f39c12; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;">
+
+                            <a asp-controller="User" asp-action="DeleteUser" asp-route-id="@user.Id" style="border: none; background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; text-decoration:none"> <i class="fa-solid fa-trash" style="margin-right: 4px;"></i> Delete</a>
+
+
+                            <a asp-controller="User" asp-action="EditUser" asp-route-id="@user.Id" style="border: none; background-color: #f39c12; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; text-decoration:none">
                                 <i class="fa-solid fa-pen-to-square" style="margin-right: 4px;"></i> Edit
-                            </button>
-                            <button style="border: none; background-color: #3498db; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;">
+                            </a>
+
+
+                            <a asp-controller="User" asp-action="Details" asp-route-id="@user.Id" style="border: none; background-color: #3498db; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; text-decoration:none">
                                 <i class="fa-solid fa-circle-info" style="margin-right: 4px;"></i> Info
-                            </button>
+                            </a>
                         </div>
                     </td>
                 </tr>
@@ -47,7 +50,11 @@
         </tbody>
     </table>
 
-    <button style="width:150px; align-self:center; background-color:black; color:white; padding:10px; border:1px solid black; border-radius:6px; font-size:16px; font-weight:600; cursor:pointer;">Add new User</button>
+    <div style="display:flex; justify-content:center">
+
+        <a asp-controller="User" asp-action="AddUser" style="width:150px; text-align:center; background-color:black; color:white; padding:10px; border:1px solid black; border-radius:6px; font-size:16px; font-weight:600; cursor:pointer; text-decoration:none">Add new User</a>
+
+    </div>
 </body>
 >
 </html>

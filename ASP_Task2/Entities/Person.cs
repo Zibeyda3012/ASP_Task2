@@ -1,15 +1,23 @@
-﻿namespace ASP_Task2.Entities
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace ASP_Task2.Entities
 {
     public class Person
     {
-        public int Id { get; set; }
 
+        public string Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Surname { get; set; }
 
-        public string Image { get; set; }
+        public string Image { get; set; } = "img1.jpg";
 
-        public short Age {  get; set; } 
+        [Required]
+        [Range(10, 75)]
+        public short Age { get; set; }
     }
 }
