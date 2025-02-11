@@ -124,6 +124,45 @@ namespace ASP_Task2.Controllers
             return View(model);
 
         }
+
+        [HttpPost]
+        public IActionResult EditUser(Person person, IFormFile image)
+        {
+            if (ModelState.IsValid)
+            {
+                Users = ReadDataFromFile();
+                var user = Users.FirstOrDefault(x => x.Id == person.Id);
+
+                if (user is not null)
+                {
+                    user.Name = person.Name;
+                    user.Surname = person.Surname;
+                    user.Age = person.Age;
+
+                    if (image is not null)
+                    {
+                        string fileExtension = Path.GetExtension(person.Image).ToLower();
+                        string fileName = $"{Guid.NewGuid()}{fileExtension}";
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", fileName);
+
+                        using (var stream = new FileStream(path, FileMode.Create))
+                            image.CopyTo(stream);
+
+                        user.Image = fileName;
+                    }
+
+                   
+                    WriteDataToFile();
+                    return RedirectToAction("Index1");
+                }
+
+                else
+                    return Redirect($"/user/EditUser/{person.Id}");
+            }
+
+            else
+                return Redirect("Index1");
+        }
     }
 
 }
